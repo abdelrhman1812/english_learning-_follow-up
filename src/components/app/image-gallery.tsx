@@ -2,9 +2,16 @@
 
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
-import { ChevronLeft, ChevronRight, X } from "lucide-react";
+import {
+  ChevronLeft,
+  ChevronRight,
+  RefreshCw,
+  X,
+  ZoomIn,
+  ZoomOut,
+} from "lucide-react";
 import Image from "next/image";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 
 interface Image {
   title: string;
@@ -27,32 +34,85 @@ export function ImageGallery({
   onOpenChange,
 }: ImageGalleryProps) {
   const [currentIndex, setCurrentIndex] = useState(initialIndex);
+  const [zoom, setZoom] = useState(1);
+  const [isLoading, setIsLoading] = useState(true);
+  const imageContainerRef = useRef<HTMLDivElement>(null);
 
-  // Reset current index when the gallery opens with a new initial index
+  // Reset zoom and loading state when image changes or gallery opens
   useEffect(() => {
     if (open) {
       setCurrentIndex(initialIndex);
+      resetZoom();
+      setIsLoading(true);
     }
   }, [initialIndex, open]);
+
+  const resetZoom = () => {
+    setZoom(1);
+    if (imageContainerRef.current) {
+      imageContainerRef.current.scrollTo({
+        top: 0,
+        left: 0,
+        behavior: "smooth",
+      });
+    }
+  };
+
+  const handleZoomIn = () => {
+    const newZoom = Math.min(zoom + 0.5, 3);
+    setZoom(newZoom);
+
+    // عند التكبير، نحرك التمرير إلى الأعلى
+    if (imageContainerRef.current && newZoom > 1) {
+      const container = imageContainerRef.current;
+      const scrollHeight = container.scrollHeight;
+      const clientHeight = container.clientHeight;
+      const scrollTop = (scrollHeight - clientHeight) / 2; // انتقل إلى المنتصف الرأسي
+      container.scrollTo({ top: scrollTop, left: 0, behavior: "smooth" });
+    }
+  };
+
+  const handleZoomOut = () => {
+    setZoom((prev) => Math.max(prev - 0.5, 1));
+  };
+
   const handlePrevious = useCallback(() => {
     setCurrentIndex((prev) => (prev > 0 ? prev - 1 : images.length - 1));
+    resetZoom();
+    setIsLoading(true);
   }, [images.length]);
 
   const handleNext = useCallback(() => {
     setCurrentIndex((prev) => (prev < images.length - 1 ? prev + 1 : 0));
+    resetZoom();
+    setIsLoading(true);
   }, [images.length]);
 
-  // Then update the useEffect dependency array to include these:
+  // Handle keyboard navigation
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (!open) return;
 
-      if (e.key === "ArrowLeft") {
-        handlePrevious();
-      } else if (e.key === "ArrowRight") {
-        handleNext();
-      } else if (e.key === "Escape") {
-        onOpenChange(false);
+      switch (e.key) {
+        case "ArrowLeft":
+          handlePrevious();
+          break;
+        case "ArrowRight":
+          handleNext();
+          break;
+        case "Escape":
+          onOpenChange(false);
+          break;
+        case "+":
+        case "=":
+          handleZoomIn();
+          break;
+        case "-":
+          handleZoomOut();
+          break;
+        case "0":
+          resetZoom();
+          break;
       }
     };
 
@@ -79,24 +139,69 @@ export function ImageGallery({
                 </p>
               )}
             </div>
-            <Button
-              variant="ghost"
-              size="icon"
-              onClick={() => onOpenChange(false)}
-            >
-              <X className="h-4 w-4" />
-              <span className="sr-only">Close</span>
-            </Button>
+            <div className="flex items-center gap-2">
+              <Button
+                variant="ghost"
+                size="icon"
+                onClick={handleZoomIn}
+                disabled={zoom >= 3}
+              >
+                <ZoomIn className="h-4 w-4" />
+                <span className="sr-only">Zoom in</span>
+              </Button>
+              <Button
+                variant="ghost"
+                size="icon"
+                onClick={handleZoomOut}
+                disabled={zoom <= 1}
+              >
+                <ZoomOut className="h-4 w-4" />
+                <span className="sr-only">Zoom out</span>
+              </Button>
+              <Button
+                variant="ghost"
+                size="icon"
+                onClick={resetZoom}
+                disabled={zoom === 1}
+              >
+                <RefreshCw className="h-4 w-4" />
+                <span className="sr-only">Reset zoom</span>
+              </Button>
+              <Button
+                variant="ghost"
+                size="icon"
+                onClick={() => onOpenChange(false)}
+              >
+                <X className="h-4 w-4" />
+                <span className="sr-only">Close</span>
+              </Button>
+            </div>
           </div>
 
           <div className="relative flex items-center justify-center bg-muted/30 p-4">
-            <div className="relative aspect-auto max-h-[70vh] w-full overflow-hidden rounded-md">
+            <div
+              ref={imageContainerRef}
+              className="relative aspect-auto max-h-[70vh] w-full overflow-auto rounded-md flex items-center justify-center"
+              style={{
+                cursor: zoom > 1 ? "grab" : "default",
+              }}
+            >
+              {isLoading && (
+                <div className="absolute inset-0 flex items-center justify-center bg-background/50">
+                  <RefreshCw className="h-8 w-8 animate-spin" />
+                </div>
+              )}
               <Image
                 src={currentImage.url}
                 alt={currentImage.title || `Image ${currentIndex + 1}`}
-                className="mx-auto h-auto max-h-[70vh] w-auto max-w-full object-contain"
-                width={800} // Match placeholder width
-                height={600} // Match placeholder height
+                className="mx-auto h-auto max-h-[70vh] w-auto max-w-full object-contain transition-transform duration-200"
+                width={800}
+                height={600}
+                style={{
+                  transform: `scale(${zoom})`,
+                  transformOrigin: "top center", // التكبير يبدأ من الأعلى
+                }}
+                onLoadingComplete={() => setIsLoading(false)}
               />
             </div>
 
@@ -130,7 +235,11 @@ export function ImageGallery({
                 {images.map((image, index) => (
                   <button
                     key={index}
-                    onClick={() => setCurrentIndex(index)}
+                    onClick={() => {
+                      setCurrentIndex(index);
+                      resetZoom();
+                      setIsLoading(true);
+                    }}
                     className={`relative h-16 w-16 flex-shrink-0 overflow-hidden rounded-md border-2 transition-all ${
                       currentIndex === index
                         ? "border-primary"

@@ -33,20 +33,40 @@
               "ebook": {
                 "images": [
                   {
-                    "title": "E-book Page 1",
-                    "url": "https://images.pexels.com/photos/415071/pexels-photo-415071.jpeg"
+                    "title": "Page 1",
+                    "url": "/assets/level_1/A1.2/w-book/page 1.jpg"
+                  },
+                  {
+                    "title": "Page 2",
+                    "url": "/assets/level_1/A1.2/w-book/page 2.jpg"
+                  },
+                  {
+                    "title": "Page 3",
+                    "url": "/assets/level_1/A1.2/w-book/page 3.jpg"
+                  },
+                  {
+                    "title": "Page 4",
+                    "url": "/assets/level_1/A1.2/w-book/page 4.jpg"
+                  },
+                  {
+                    "title": "Page 5",
+                    "url": "/assets/level_1/A1.2/w-book/page 5.jpg"
+                  },
+                  {
+                    "title": "Page 6",
+                    "url": "/assets/level_1/A1.2/w-book/page 6.jpg"
                   }
                 ]
               },
               "activities": {
                 "images": [
                   {
-                    "title": "Matching Exercise",
-                    "url": "https://images.pexels.com/photos/4145190/pexels-photo-4145190.jpeg"
+                    "title": "Page 8",
+                    "url": "/assets/level_1/A1.2/activities/page 8.jpg"
                   },
                   {
-                    "title": "Matching Exercise",
-                    "url": "https://images.pexels.com/photos/4145190/pexels-photo-4145190.jpeg"
+                    "title": "Page 9",
+                    "url": "/assets/level_1/A1.2/activities/page 9.jpg"
                   }
                 ]
               }
