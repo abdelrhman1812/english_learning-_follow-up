@@ -117,19 +117,26 @@ export function LevelSidebar({ levels }: LevelSidebarProps) {
               </SidebarMenuButton>
 
               {expandedLevels.includes(index) && (
-                <SidebarMenuSub className="mt-1 space-y-1 pl-8">
+                <SidebarMenuSub className="mt-1 pl-6 border-l-2 border-muted/50">
                   {level.units.map((unit) => (
-                    <SidebarMenuSubItem key={unit.id}>
-                      <SidebarMenuSubButton className="w-full px-3 py-1.5 text-sm rounded-md hover:bg-accent/50 hover:text-accent-foreground transition-colors">
+                    <SidebarMenuSubItem key={unit.id} className="relative">
+                      <SidebarMenuSubButton className="w-full px-3 py-2 text-sm rounded-md hover:bg-accent/30 hover:text-accent-foreground transition-colors group">
                         <div className="flex items-center justify-between w-full">
-                          <span>{unit.name}</span>
-                          <span className="text-xs bg-muted px-2 py-0.5 rounded-full">
+                          <Link
+                            href={`/levels/${level.id}`}
+                            className="flex-1 text-left group-hover:text-primary transition-colors"
+                          >
+                            {unit.name}
+                          </Link>
+                          <span className="ml-2 text-xs bg-muted/80 text-muted-foreground px-2 py-0.5 rounded-full">
                             {unit.sessions.length}{" "}
                             {unit.sessions.length === 1
                               ? "session"
                               : "sessions"}
                           </span>
                         </div>
+                        {/* Active indicator */}
+                        <span className="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-4 bg-primary rounded-full opacity-0 group-hover:opacity-100 transition-opacity"></span>
                       </SidebarMenuSubButton>
                     </SidebarMenuSubItem>
                   ))}

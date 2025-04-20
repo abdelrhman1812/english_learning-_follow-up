@@ -54,7 +54,7 @@ const levelStyles = [
 export default function LevelsPage() {
   return (
     <div className="min-h-screen bg-background p-8">
-      <div className="max-w-7xl mx-auto space-y-8">
+      <div className="max-w-7xl mx-auto space-y-8 pb-8">
         <div className="text-center space-y-2">
           <h1 className="text-4xl font-bold tracking-tight text-primary">
             Follow-up system.
