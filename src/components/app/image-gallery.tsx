@@ -37,6 +37,9 @@ export function ImageGallery({
   const [currentIndex, setCurrentIndex] = useState(initialIndex);
   const [zoom, setZoom] = useState(1);
   const [isLoading, setIsLoading] = useState(true);
+  const [position, setPosition] = useState({ x: 0, y: 0 });
+  const [isDragging, setIsDragging] = useState(false);
+  const [startPos, setStartPos] = useState({ x: 0, y: 0 });
   const imageContainerRef = useRef<HTMLDivElement>(null);
 
   // Reset zoom and loading state when image changes or gallery opens
@@ -50,6 +53,7 @@ export function ImageGallery({
 
   const resetZoom = () => {
     setZoom(1);
+    setPosition({ x: 0, y: 0 });
     if (imageContainerRef.current) {
       imageContainerRef.current.scrollTo({
         top: 0,
@@ -62,18 +66,56 @@ export function ImageGallery({
   const handleZoomIn = () => {
     const newZoom = Math.min(zoom + 0.5, 3);
     setZoom(newZoom);
-
-    if (imageContainerRef.current && newZoom > 1) {
-      const container = imageContainerRef.current;
-      const scrollHeight = container.scrollHeight;
-      const clientHeight = container.clientHeight;
-      const scrollTop = (scrollHeight - clientHeight) / 2;
-      container.scrollTo({ top: scrollTop, left: 0, behavior: "smooth" });
-    }
   };
 
   const handleZoomOut = () => {
     setZoom((prev) => Math.max(prev - 0.5, 1));
+  };
+
+  const handleMouseDown = (e: React.MouseEvent) => {
+    if (zoom > 1) {
+      setIsDragging(true);
+      setStartPos({
+        x: e.clientX - position.x,
+        y: e.clientY - position.y,
+      });
+    }
+  };
+
+  const handleMouseMove = (e: React.MouseEvent) => {
+    if (!isDragging) return;
+
+    const container = imageContainerRef.current;
+    if (!container) return;
+
+    const newX = e.clientX - startPos.x;
+    const newY = e.clientY - startPos.y;
+
+    // Calculate max position based on zoom level
+    const maxX = (container.scrollWidth - container.clientWidth) / 2;
+    const maxY = (container.scrollHeight - container.clientHeight) / 2;
+
+    setPosition({
+      x: Math.max(-maxX, Math.min(maxX, newX)),
+      y: Math.max(-maxY, Math.min(maxY, newY)),
+    });
+  };
+
+  const handleMouseUp = () => {
+    setIsDragging(false);
+  };
+
+  const handleWheel = (e: React.WheelEvent) => {
+    if (zoom > 1) {
+      const container = imageContainerRef.current;
+      if (!container) return;
+
+      container.scrollBy({
+        left: e.deltaX,
+        top: e.deltaY,
+        behavior: "smooth",
+      });
+    }
   };
 
   const handlePrevious = useCallback(() => {
@@ -211,8 +253,14 @@ export function ImageGallery({
               ref={imageContainerRef}
               className="relative aspect-auto max-h-[calc(90vh-180px)] w-full overflow-auto rounded-md flex items-center justify-center"
               style={{
-                cursor: zoom > 1 ? "grab" : "default",
+                cursor:
+                  zoom > 1 ? (isDragging ? "grabbing" : "grab") : "default",
               }}
+              onMouseDown={handleMouseDown}
+              onMouseMove={handleMouseMove}
+              onMouseUp={handleMouseUp}
+              onMouseLeave={handleMouseUp}
+              onWheel={handleWheel}
             >
               {isLoading && (
                 <div className="absolute inset-0 flex items-center justify-center bg-background/50">
@@ -226,8 +274,8 @@ export function ImageGallery({
                 width={800}
                 height={600}
                 style={{
-                  transform: `scale(${zoom})`,
-                  transformOrigin: "top center",
+                  transform: `scale(${zoom}) translate(${position.x}px, ${position.y}px)`,
+                  transformOrigin: "center center",
                 }}
                 onLoadingComplete={() => setIsLoading(false)}
               />

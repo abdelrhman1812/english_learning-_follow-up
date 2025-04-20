@@ -12,16 +12,14 @@ const LevelPage = async ({
 }) => {
   const resolvedParams = await params;
   const { levelId } = resolvedParams;
-  console.log(levelId);
 
   const units = levelsData.levels.filter((level) => level.id == levelId);
-  console.log(units[0].units);
 
   return (
     <div className="min-h-screen p-8">
       <div className="max-w-6xl mx-auto space-y-8">
         <div className="text-center space-y-4">
-          <h1 className="text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent">
+          <h1 className="  text-3xl md:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent">
             Language Learning Units
           </h1>
           <p className="text-lg text-muted-foreground">
@@ -50,7 +48,7 @@ const LevelPage = async ({
                 </div>
               </CardHeader>
               <CardContent>
-                <ScrollArea className="h-[280px] w-full rounded-xl border border-accent/30 p-4">
+                <ScrollArea className="h-[280px] w-full rounded-xl border border-accent/30 md:p-4">
                   {unit?.sessions?.map((session, sessionIndex) => (
                     <div
                       key={sessionIndex}
