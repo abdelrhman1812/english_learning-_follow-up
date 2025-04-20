@@ -5,6 +5,7 @@ import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 import {
   ChevronLeft,
   ChevronRight,
+  Download,
   RefreshCw,
   X,
   ZoomIn,
@@ -62,12 +63,11 @@ export function ImageGallery({
     const newZoom = Math.min(zoom + 0.5, 3);
     setZoom(newZoom);
 
-    // عند التكبير، نحرك التمرير إلى الأعلى
     if (imageContainerRef.current && newZoom > 1) {
       const container = imageContainerRef.current;
       const scrollHeight = container.scrollHeight;
       const clientHeight = container.clientHeight;
-      const scrollTop = (scrollHeight - clientHeight) / 2; // انتقل إلى المنتصف الرأسي
+      const scrollTop = (scrollHeight - clientHeight) / 2;
       container.scrollTo({ top: scrollTop, left: 0, behavior: "smooth" });
     }
   };
@@ -87,6 +87,15 @@ export function ImageGallery({
     resetZoom();
     setIsLoading(true);
   }, [images.length]);
+
+  const handleDownload = () => {
+    const link = document.createElement("a");
+    link.href = images[currentIndex].url;
+    link.download = images[currentIndex].title || `image-${currentIndex + 1}`;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
 
   // Handle keyboard navigation
   useEffect(() => {
@@ -112,6 +121,9 @@ export function ImageGallery({
           break;
         case "0":
           resetZoom();
+          break;
+        case "d":
+          handleDownload();
           break;
       }
     };
@@ -141,6 +153,16 @@ export function ImageGallery({
               )}
             </div>
             <div className="flex items-center gap-1 sm:gap-2">
+              <Button
+                variant="ghost"
+                size="icon"
+                onClick={handleDownload}
+                className="h-8 w-8 sm:h-9 sm:w-9"
+                title="Download image"
+              >
+                <Download className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
+                <span className="sr-only">Download image</span>
+              </Button>
               <Button
                 variant="ghost"
                 size="icon"
