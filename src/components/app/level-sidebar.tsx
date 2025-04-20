@@ -73,13 +73,15 @@ export function LevelSidebar({ levels }: LevelSidebarProps) {
   };
 
   return (
-    <Sidebar className="border-r relative">
-      <SidebarHeader className="border-b ">
-        <div className="flex items-center gap-2 px-4 py-3">
-          <GraduationCap className="h-6 w-6" />
+    <Sidebar className="border-r border-border relative bg-sidebar">
+      <SidebarHeader className="border-b border-border">
+        <div className="flex items-center gap-3 px-5 py-4">
+          <GraduationCap className="h-7 w-7 text-primary" />
           <div>
-            <h2 className="text-lg font-semibold">EduDashboard</h2>
-            <p className="text-xs text-muted-foreground">
+            <h2 className="text-xl font-semibold text-foreground">
+              EduDashboard
+            </h2>
+            <p className="text-sm text-muted-foreground">
               Language Learning Platform
             </p>
           </div>
@@ -88,35 +90,37 @@ export function LevelSidebar({ levels }: LevelSidebarProps) {
       <SidebarContent>
         <SidebarMenu>
           {levels.map((level, index) => (
-            <SidebarMenuItem key={level.name}>
+            <SidebarMenuItem key={level.name} className="hover:bg-accent">
               <SidebarMenuButton
                 onClick={() => toggleLevel(index)}
-                className="justify-between"
+                className="justify-between hover:bg-accent/90 text-base"
               >
-                <div className="flex items-center gap-2">
-                  <BookOpen className="h-4 w-4" />
+                <div className="flex items-center gap-3">
+                  <BookOpen className="h-5 w-5 text-primary" />
                   <div>
-                    <span>{level.name}</span>
-                    <span className="ml-2 text-xs text-muted-foreground">
+                    <span className="text-foreground text-base">
+                      {level.name}
+                    </span>
+                    <span className="ml-2 text-sm text-muted-foreground">
                       ({level.sub_name})
                     </span>
                   </div>
                 </div>
                 {expandedLevels.includes(index) ? (
-                  <ChevronDown className="h-4 w-4" />
+                  <ChevronDown className="h-5 w-5 text-primary" />
                 ) : (
-                  <ChevronRight className="h-4 w-4" />
+                  <ChevronRight className="h-5 w-5 text-primary" />
                 )}
               </SidebarMenuButton>
 
               {expandedLevels.includes(index) && level.units.length > 0 && (
-                <SidebarMenuSub>
+                <SidebarMenuSub className="bg-accent/50">
                   {level.units.map((unit) => (
                     <div key={unit.name}>
-                      <SidebarMenuSubItem>
-                        <SidebarMenuSubButton className="justify-between">
-                          <span>{unit.name}</span>
-                          <span className="text-xs text-muted-foreground">
+                      <SidebarMenuSubItem className="hover:bg-accent/70">
+                        <SidebarMenuSubButton className="justify-between text-base">
+                          <span className="text-foreground">{unit.name}</span>
+                          <span className="text-sm text-muted-foreground">
                             {unit.sessions.length}{" "}
                             {unit.sessions.length === 1
                               ? "session"

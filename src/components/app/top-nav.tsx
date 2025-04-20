@@ -16,7 +16,7 @@ import { SidebarTrigger } from "../ui/sidebar";
 
 export function TopNav() {
   return (
-    <header className="sticky top-0 z-10 flex h-16 items-center gap-4 border-b bg-background px-6">
+    <header className="sticky py-2 top-0 z-10 flex h-16 items-center gap-4 border-b bg-background px-6">
       <SidebarTrigger />
       <div className="flex flex-1 items-center gap-4">
         <form className="flex-1 sm:flex-initial">

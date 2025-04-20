@@ -10,6 +10,7 @@ import {
   Star,
   Trophy,
 } from "lucide-react";
+import Link from "next/link";
 
 const levelStyles = [
   {
@@ -55,9 +56,11 @@ export default function LevelsPage() {
     <div className="min-h-screen bg-background p-8">
       <div className="max-w-7xl mx-auto space-y-8">
         <div className="text-center space-y-2">
-          <h1 className="text-4xl font-bold tracking-tight">Learning Levels</h1>
+          <h1 className="text-4xl font-bold tracking-tight text-primary">
+            Follow-up system.
+          </h1>
           <p className="text-muted-foreground">
-            Master your skills through our comprehensive learning paths
+            Choose a level below to get started.
           </p>
         </div>
 
@@ -74,8 +77,8 @@ export default function LevelsPage() {
 
                 <CardHeader className="space-y-1 flex items-start justify-between pb-2">
                   <div className="space-y-1">
-                    <CardTitle className="text-2xl font-bold">
-                      {level.name}
+                    <CardTitle className="text-2xl font-bold relative z-50">
+                      <Link href={`/levels/${level.id}`}>{level.name}</Link>
                     </CardTitle>
                     <div className="inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors bg-primary text-primary-foreground">
                       {level.sub_name}

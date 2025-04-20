@@ -13,6 +13,26 @@
               "id": "session_1",
               "name": "Session 1",
               "plan": {
+                "images": [],
+                "audios": []
+              },
+              "ebook": {
+                "images": []
+              },
+              "activities": {
+                "images": []
+              }
+            }
+          ]
+        },
+        {
+          "id": "A1_2",
+          "name": "A1.2",
+          "sessions": [
+            {
+              "id": "session_1",
+              "name": "Session 1",
+              "plan": {
                 "images": [
                   {
                     "title": "Lesson Introduction",
@@ -23,12 +43,7 @@
                     "url": "https://images.pexels.com/photos/4145154/pexels-photo-4145154.jpeg"
                   }
                 ],
-                "audios": [
-                  {
-                    "title": "Greetings Dialogue",
-                    "url": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"
-                  }
-                ]
+                "audios": []
               },
               "ebook": {
                 "images": [
@@ -70,83 +85,25 @@
                   }
                 ]
               }
-            },
-            {
-              "id": "session_2",
-              "name": "Session 2",
-              "plan": {
-                "images": [
-                  {
-                    "title": "Grammar Rules",
-                    "url": "https://images.pexels.com/photos/4145194/pexels-photo-4145194.jpeg"
-                  },
-                  {
-                    "title": "Example Sentences",
-                    "url": "https://images.pexels.com/photos/4145195/pexels-photo-4145195.jpeg"
-                  }
-                ],
-                "audios": [
-                  {
-                    "title": "Pronunciation Practice",
-                    "url": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3"
-                  }
-                ]
-              },
-              "ebook": {
-                "images": [
-                  {
-                    "title": "E-book Page 2",
-                    "url": "https://images.pexels.com/photos/415072/pexels-photo-415072.jpeg"
-                  }
-                ]
-              },
-              "activities": {
-                "images": [
-                  {
-                    "title": "Fill-in-the-Blanks",
-                    "url": "https://images.pexels.com/photos/4145196/pexels-photo-4145196.jpeg"
-                  }
-                ]
-              }
             }
           ]
         },
         {
           "id": "A1_2",
-          "name": "A1.2",
+          "name": "A1.3",
           "sessions": [
             {
               "id": "session_1",
               "name": "Session 1",
               "plan": {
-                "images": [
-                  {
-                    "title": "Daily Routine Vocabulary",
-                    "url": "https://images.pexels.com/photos/4145197/pexels-photo-4145197.jpeg"
-                  }
-                ],
-                "audios": [
-                  {
-                    "title": "Listening Exercise",
-                    "url": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3"
-                  }
-                ]
+                "images": [],
+                "audios": []
               },
               "ebook": {
-                "images": [
-                  {
-                    "title": "E-book Page 3",
-                    "url": "https://images.pexels.com/photos/415073/pexels-photo-415073.jpeg"
-                  }
-                ]
+                "images": []
               },
               "activities": {
-                "images": [
-                  {
-                    "title": "Role Play Scenario",
-                    "url": "https://images.pexels.com/photos/4145198/pexels-photo-4145198.jpeg"
-                  }
-                ]
+                "images": []
               }
             }
           ]
@@ -166,38 +123,14 @@
               "id": "session_1",
               "name": "Session 1",
               "plan": {
-                "images": [
-                  {
-                    "title": "Past Tense Overview",
-                    "url": "https://images.pexels.com/photos/4145199/pexels-photo-4145199.jpeg"
-                  },
-                  {
-                    "title": "Irregular Verbs List",
-                    "url": "https://images.pexels.com/photos/4145200/pexels-photo-4145200.jpeg"
-                  }
-                ],
-                "audios": [
-                  {
-                    "title": "Past Tense Dialogue",
-                    "url": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3"
-                  }
-                ]
+                "images": [],
+                "audios": []
               },
               "ebook": {
-                "images": [
-                  {
-                    "title": "E-book Page 4",
-                    "url": "https://images.pexels.com/photos/415074/pexels-photo-415074.jpeg"
-                  }
-                ]
+                "images": []
               },
               "activities": {
-                "images": [
-                  {
-                    "title": "Verb Conjugation Practice",
-                    "url": "https://images.pexels.com/photos/4145201/pexels-photo-4145201.jpeg"
-                  }
-                ]
+                "images": []
               }
             }
           ]
@@ -210,30 +143,11 @@
               "id": "session_1",
               "name": "Session 1",
               "plan": {
-                "images": [
-                  {
-                    "title": "Future Tense Structure",
-                    "url": "https://images.pexels.com/photos/4145202/pexels-photo-4145202.jpeg"
-                  },
-                  {
-                    "title": "Example Future Plans",
-                    "url": "https://images.pexels.com/photos/4145203/pexels-photo-4145203.jpeg"
-                  }
-                ],
-                "audios": [
-                  {
-                    "title": "Future Plans Conversation",
-                    "url": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-5.mp3"
-                  }
-                ]
+                "images": [],
+                "audios": []
               },
               "ebook": {
-                "images": [
-                  {
-                    "title": "E-book Page 5",
-                    "url": "https://images.pexels.com/photos/415075/pexels-photo-415075.jpeg"
-                  }
-                ]
+                "images": []
               },
               "activities": {
                 "images": [
@@ -261,38 +175,14 @@
               "id": "session_1",
               "name": "Session 1",
               "plan": {
-                "images": [
-                  {
-                    "title": "Conditional Structures",
-                    "url": "https://images.pexels.com/photos/4145205/pexels-photo-4145205.jpeg"
-                  },
-                  {
-                    "title": "Hypothetical Scenarios",
-                    "url": "https://images.pexels.com/photos/4145206/pexels-photo-4145206.jpeg"
-                  }
-                ],
-                "audios": [
-                  {
-                    "title": "Conditional Sentences Practice",
-                    "url": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-6.mp3"
-                  }
-                ]
+                "images": [],
+                "audios": []
               },
               "ebook": {
-                "images": [
-                  {
-                    "title": "E-book Page 6",
-                    "url": "https://images.pexels.com/photos/415076/pexels-photo-415076.jpeg"
-                  }
-                ]
+                "images": []
               },
               "activities": {
-                "images": [
-                  {
-                    "title": "Create Your Own Conditionals",
-                    "url": "https://images.pexels.com/photos/4145207/pexels-photo-4145207.jpeg"
-                  }
-                ]
+                "images": []
               }
             }
           ]
@@ -312,38 +202,14 @@
               "id": "session_1",
               "name": "Session 1",
               "plan": {
-                "images": [
-                  {
-                    "title": "Reported Speech Rules",
-                    "url": "https://images.pexels.com/photos/4145208/pexels-photo-4145208.jpeg"
-                  },
-                  {
-                    "title": "Direct to Reported Examples",
-                    "url": "https://images.pexels.com/photos/4145209/pexels-photo-4145209.jpeg"
-                  }
-                ],
-                "audios": [
-                  {
-                    "title": "Reported Speech Exercise",
-                    "url": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-7.mp3"
-                  }
-                ]
+                "images": [],
+                "audios": []
               },
               "ebook": {
-                "images": [
-                  {
-                    "title": "E-book Page 7",
-                    "url": "https://images.pexels.com/photos/415077/pexels-photo-415077.jpeg"
-                  }
-                ]
+                "images": []
               },
               "activities": {
-                "images": [
-                  {
-                    "title": "News Report Transformation",
-                    "url": "https://images.pexels.com/photos/4145210/pexels-photo-4145210.jpeg"
-                  }
-                ]
+                "images": []
               }
             }
           ]
@@ -363,38 +229,14 @@
               "id": "session_1",
               "name": "Session 1",
               "plan": {
-                "images": [
-                  {
-                    "title": "Academic Writing Structure",
-                    "url": "https://images.pexels.com/photos/4145211/pexels-photo-4145211.jpeg"
-                  },
-                  {
-                    "title": "Formal vs Informal Language",
-                    "url": "https://images.pexels.com/photos/4145212/pexels-photo-4145212.jpeg"
-                  }
-                ],
-                "audios": [
-                  {
-                    "title": "Lecture Excerpt",
-                    "url": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-8.mp3"
-                  }
-                ]
+                "images": [],
+                "audios": []
               },
               "ebook": {
-                "images": [
-                  {
-                    "title": "E-book Page 8",
-                    "url": "https://images.pexels.com/photos/415078/pexels-photo-415078.jpeg"
-                  }
-                ]
+                "images": []
               },
               "activities": {
-                "images": [
-                  {
-                    "title": "Essay Outline Practice",
-                    "url": "https://images.pexels.com/photos/4145213/pexels-photo-4145213.jpeg"
-                  }
-                ]
+                "images": []
               }
             }
           ]
@@ -409,46 +251,7 @@
         {
           "id": "C2_1",
           "name": "C2.1",
-          "sessions": [
-            {
-              "id": "session_1",
-              "name": "Session 1",
-              "plan": {
-                "images": [
-                  {
-                    "title": "Idiomatic Expressions",
-                    "url": "https://images.pexels.com/photos/4145214/pexels-photo-4145214.jpeg"
-                  },
-                  {
-                    "title": "Cultural References",
-                    "url": "https://images.pexels.com/photos/4145215/pexels-photo-4145215.jpeg"
-                  }
-                ],
-                "audios": [
-                  {
-                    "title": "Advanced Listening Comprehension",
-                    "url": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-9.mp3"
-                  }
-                ]
-              },
-              "ebook": {
-                "images": [
-                  {
-                    "title": "E-book Page 9",
-                    "url": "https://images.pexels.com/photos/415079/pexels-photo-415079.jpeg"
-                  }
-                ]
-              },
-              "activities": {
-                "images": [
-                  {
-                    "title": "Debate Preparation",
-                    "url": "https://images.pexels.com/photos/4145216/pexels-photo-4145216.jpeg"
-                  }
-                ]
-              }
-            }
-          ]
+          "sessions": []
         }
       ]
     }
