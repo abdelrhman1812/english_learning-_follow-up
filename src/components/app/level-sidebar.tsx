@@ -66,70 +66,72 @@ export function LevelSidebar({ levels }: LevelSidebarProps) {
   const [expandedLevels, setExpandedLevels] = useState<number[]>([]);
 
   const toggleLevel = (levelIndex: number) => {
-    if (expandedLevels.includes(levelIndex)) {
-      setExpandedLevels(expandedLevels.filter((index) => index !== levelIndex));
-    } else {
-      setExpandedLevels([...expandedLevels, levelIndex]);
-    }
+    setExpandedLevels((prev) =>
+      prev.includes(levelIndex)
+        ? prev.filter((index) => index !== levelIndex)
+        : [...prev, levelIndex]
+    );
   };
 
   return (
-    <Sidebar className="border-r border-border relative   bg-sidebar">
-      <SidebarHeader className="border-b border-border mb-10">
-        <div className="flex items-center gap-3 px-5 py-1">
-          <GraduationCap className="h-7 w-7 text-primary" />
+    <Sidebar className="border-r relative border-border/50 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+      <SidebarHeader className="border-b border-border/50 sticky top-0 bg-background/95 z-10">
+        <div className="flex items-center gap-3 px-4 py-3">
+          <GraduationCap className="h-6 w-6 text-primary" />
           <div>
-            <Link href={"/"} className="text-xl font-semibold text-foreground">
+            <Link
+              href="/"
+              className="text-lg font-semibold text-foreground hover:text-primary transition-colors"
+            >
               EduDashboard
             </Link>
-            <p className="text-sm text-muted-foreground">
+            <p className="text-xs text-muted-foreground">
               Language Learning Platform
             </p>
           </div>
         </div>
       </SidebarHeader>
-      <SidebarContent>
-        <SidebarMenu>
+
+      <SidebarContent className="py-8">
+        <SidebarMenu className="space-y-1 px-2">
           {levels.map((level, index) => (
-            <SidebarMenuItem key={level.name} className="hover:bg-accent">
+            <SidebarMenuItem key={level.id}>
               <SidebarMenuButton
                 onClick={() => toggleLevel(index)}
-                className="justify-between hover:bg-accent/90 text-base"
+                className="w-full justify-between px-3 py-2 rounded-md hover:bg-accent hover:text-accent-foreground transition-colors"
               >
                 <div className="flex items-center gap-3">
-                  <BookOpen className="h-5 w-5 text-primary" />
-                  <div>
-                    <span className="text-foreground text-base">
-                      {level.name}
-                    </span>
-                    <span className="ml-2 text-sm text-muted-foreground">
-                      ({level.sub_name})
+                  <BookOpen className="h-4 w-4 text-primary flex-shrink-0" />
+                  <div className="text-left">
+                    <span className="text-sm font-medium">{level.name}</span>
+                    <span className="ml-2 text-xs text-muted-foreground">
+                      {level.sub_name}
                     </span>
                   </div>
                 </div>
                 {expandedLevels.includes(index) ? (
-                  <ChevronDown className="h-5 w-5 text-primary" />
+                  <ChevronDown className="h-4 w-4 text-muted-foreground" />
                 ) : (
-                  <ChevronRight className="h-5 w-5 text-primary" />
+                  <ChevronRight className="h-4 w-4 text-muted-foreground" />
                 )}
               </SidebarMenuButton>
 
-              {expandedLevels.includes(index) && level.units.length > 0 && (
-                <SidebarMenuSub className="bg-accent/50">
+              {expandedLevels.includes(index) && (
+                <SidebarMenuSub className="mt-1 space-y-1 pl-8">
                   {level.units.map((unit) => (
-                    <div key={unit.name}>
-                      <SidebarMenuSubItem className="hover:bg-accent/70">
-                        <SidebarMenuSubButton className="justify-between text-base">
-                          <span className="text-foreground">{unit.name}</span>
-                          <span className="text-sm text-muted-foreground">
+                    <SidebarMenuSubItem key={unit.id}>
+                      <SidebarMenuSubButton className="w-full px-3 py-1.5 text-sm rounded-md hover:bg-accent/50 hover:text-accent-foreground transition-colors">
+                        <div className="flex items-center justify-between w-full">
+                          <span>{unit.name}</span>
+                          <span className="text-xs bg-muted px-2 py-0.5 rounded-full">
                             {unit.sessions.length}{" "}
                             {unit.sessions.length === 1
                               ? "session"
                               : "sessions"}
                           </span>
-                        </SidebarMenuSubButton>
-                      </SidebarMenuSubItem>
-                    </div>
+                        </div>
+                      </SidebarMenuSubButton>
+                    </SidebarMenuSubItem>
                   ))}
                 </SidebarMenuSub>
               )}

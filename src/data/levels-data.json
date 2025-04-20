@@ -35,12 +35,8 @@
               "plan": {
                 "images": [
                   {
-                    "title": "Lesson Introduction",
-                    "url": "https://images.pexels.com/photos/4145153/pexels-photo-4145153.jpeg"
-                  },
-                  {
-                    "title": "Vocabulary Chart",
-                    "url": "https://images.pexels.com/photos/4145154/pexels-photo-4145154.jpeg"
+                    "title": "conversation about the time",
+                    "url": "/assets/level_1/A1.2/Plan/conversation about the time.png"
                   }
                 ],
                 "audios": []

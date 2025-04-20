@@ -16,8 +16,8 @@ const LevelPage = async ({
   const units = levelsData.levels.filter((level) => level.id == levelId);
 
   return (
-    <div className="min-h-screen p-8">
-      <div className="max-w-6xl mx-auto space-y-8">
+    <div className="min-h-screen p-4">
+      <div className="space-y-8">
         <div className="text-center space-y-4">
           <h1 className="text-2xl md:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent">
             Language Learning Units
@@ -27,7 +27,7 @@ const LevelPage = async ({
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2  gap-8 py-8 ">
           {units[0].units.map((unit, index) => (
             <Card
               key={index}

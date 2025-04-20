@@ -76,21 +76,21 @@ export function SessionContent({ session }: SessionContentProps) {
         <TabsList className="grid w-full grid-cols-3">
           <TabsTrigger
             value="plan"
-            className="flex items-center gap-2 data-[state=active]:bg-primary data-[state=active]:text-primary-foreground"
+            className="flex items-center gap-2 data-[state=active]:bg-accent data-[state=active]:text-accent-foreground "
           >
             <FileText className="h-4 w-4" />
             <span>Lesson Plan</span>
           </TabsTrigger>
           <TabsTrigger
             value="ebook"
-            className="flex items-center gap-2 data-[state=active]:bg-primary data-[state=active]:text-primary-foreground"
+            className="flex items-center gap-2 data-[state=active]:bg-accent data-[state=active]:text-accent-foreground "
           >
             <BookOpen className="h-4 w-4" />
             <span>E-Book</span>
           </TabsTrigger>
           <TabsTrigger
             value="activities"
-            className="flex items-center gap-2 data-[state=active]:bg-primary data-[state=active]:text-primary-foreground"
+            className="flex items-center gap-2 data-[state=active]:bg-accent data-[state=active]:text-accent-foreground "
           >
             <Play className="h-4 w-4" />
             <span>Activities</span>
