@@ -16,7 +16,7 @@ const Page = async ({ params }: { params: Promise<PageParams> }) => {
 
   const session = unit?.sessions.find((ses) => ses.id === sessionId);
 
-  return <>{session && <SessionContent session={session} />}a</>;
+  return <>{session && <SessionContent session={session} />}</>;
 };
 
 export default Page;

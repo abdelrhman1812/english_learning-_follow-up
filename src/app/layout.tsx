@@ -33,7 +33,7 @@ export default function RootLayout({
         <SidebarProvider defaultOpen={true} className="">
           <div className=" flex h-screen dark:bg-background  w-full ">
             <DashboardShell />
-            <main className="flex flex-col flex-1 w-full ">
+            <main className="flex flex-col  flex-1 w-full ">
               <TopNav />
               {children}
             </main>

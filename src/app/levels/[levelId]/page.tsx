@@ -19,7 +19,7 @@ const LevelPage = async ({
     <div className="min-h-screen p-8">
       <div className="max-w-6xl mx-auto space-y-8">
         <div className="text-center space-y-4">
-          <h1 className="  text-3xl md:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent">
+          <h1 className="text-2xl md:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent">
             Language Learning Units
           </h1>
           <p className="text-lg text-muted-foreground">

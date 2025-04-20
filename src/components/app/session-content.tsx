@@ -74,15 +74,24 @@ export function SessionContent({ session }: SessionContentProps) {
 
       <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
         <TabsList className="grid w-full grid-cols-3">
-          <TabsTrigger value="plan" className="flex items-center gap-2">
+          <TabsTrigger
+            value="plan"
+            className="flex items-center gap-2 data-[state=active]:bg-primary data-[state=active]:text-primary-foreground"
+          >
             <FileText className="h-4 w-4" />
             <span>Lesson Plan</span>
           </TabsTrigger>
-          <TabsTrigger value="ebook" className="flex items-center gap-2">
+          <TabsTrigger
+            value="ebook"
+            className="flex items-center gap-2 data-[state=active]:bg-primary data-[state=active]:text-primary-foreground"
+          >
             <BookOpen className="h-4 w-4" />
             <span>E-Book</span>
           </TabsTrigger>
-          <TabsTrigger value="activities" className="flex items-center gap-2">
+          <TabsTrigger
+            value="activities"
+            className="flex items-center gap-2 data-[state=active]:bg-primary data-[state=active]:text-primary-foreground"
+          >
             <Play className="h-4 w-4" />
             <span>Activities</span>
           </TabsTrigger>
@@ -103,7 +112,7 @@ export function SessionContent({ session }: SessionContentProps) {
                   {session.plan.images.map((image, index) => (
                     <div
                       key={index}
-                      className="group relative overflow-hidden rounded-lg border shadow-sm transition-all hover:shadow-md"
+                      className="group relative overflow-hidden rounded-lg border border-muted transition-all hover:shadow-md"
                       onClick={() =>
                         openGallery(
                           session.plan.images,
@@ -163,7 +172,7 @@ export function SessionContent({ session }: SessionContentProps) {
                 {session.ebook.images.map((image, index) => (
                   <div
                     key={index}
-                    className="group relative overflow-hidden rounded-lg border shadow-sm transition-all hover:shadow-md"
+                    className="group relative overflow-hidden rounded-lg border border-muted transition-all hover:shadow-md"
                     onClick={() =>
                       openGallery(session.ebook.images, "E-Book Pages", index)
                     }
@@ -210,7 +219,7 @@ export function SessionContent({ session }: SessionContentProps) {
                 {session.activities.images.map((image, index) => (
                   <div
                     key={index}
-                    className="group relative overflow-hidden rounded-lg border shadow-sm transition-all hover:shadow-md"
+                    className="group relative overflow-hidden rounded-lg border border-muted transition-all hover:shadow-md"
                     onClick={() =>
                       openGallery(
                         session.activities.images,

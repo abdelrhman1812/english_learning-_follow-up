@@ -17,6 +17,7 @@ import {
   ChevronRight,
   GraduationCap,
 } from "lucide-react";
+import Link from "next/link";
 import { useState } from "react";
 
 interface Image {
@@ -73,14 +74,14 @@ export function LevelSidebar({ levels }: LevelSidebarProps) {
   };
 
   return (
-    <Sidebar className="border-r border-border relative bg-sidebar">
-      <SidebarHeader className="border-b border-border">
-        <div className="flex items-center gap-3 px-5 py-4">
+    <Sidebar className="border-r border-border relative   bg-sidebar">
+      <SidebarHeader className="border-b border-border mb-10">
+        <div className="flex items-center gap-3 px-5 py-1">
           <GraduationCap className="h-7 w-7 text-primary" />
           <div>
-            <h2 className="text-xl font-semibold text-foreground">
+            <Link href={"/"} className="text-xl font-semibold text-foreground">
               EduDashboard
-            </h2>
+            </Link>
             <p className="text-sm text-muted-foreground">
               Language Learning Platform
             </p>
