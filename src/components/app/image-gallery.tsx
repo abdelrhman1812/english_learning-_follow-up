@@ -9,7 +9,6 @@ import {
   RefreshCw,
   X,
   ZoomIn,
-  ZoomOut,
 } from "lucide-react";
 import Image from "next/image";
 import { useCallback, useEffect, useRef, useState } from "react";
@@ -41,6 +40,7 @@ export function ImageGallery({
   const [isDragging, setIsDragging] = useState(false);
   const [startPos, setStartPos] = useState({ x: 0, y: 0 });
   const imageContainerRef = useRef<HTMLDivElement>(null);
+  const touchStartDistance = useRef(0);
 
   // Reset zoom and loading state when image changes or gallery opens
   useEffect(() => {
@@ -72,6 +72,7 @@ export function ImageGallery({
     setZoom((prev) => Math.max(prev - 0.5, 1));
   };
 
+  // Mouse event handlers
   const handleMouseDown = (e: React.MouseEvent) => {
     if (zoom > 1) {
       setIsDragging(true);
@@ -103,6 +104,61 @@ export function ImageGallery({
 
   const handleMouseUp = () => {
     setIsDragging(false);
+  };
+
+  // Touch event handlers
+  const handleTouchStart = (e: React.TouchEvent) => {
+    if (e.touches.length === 2) {
+      // Pinch zoom start
+      touchStartDistance.current = Math.hypot(
+        e.touches[0].clientX - e.touches[1].clientX,
+        e.touches[0].clientY - e.touches[1].clientY
+      );
+    } else if (zoom > 1) {
+      // Single touch pan start
+      setIsDragging(true);
+      setStartPos({
+        x: e.touches[0].clientX - position.x,
+        y: e.touches[0].clientY - position.y,
+      });
+    }
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    if (e.touches.length === 2) {
+      // Pinch zoom
+      const currentDistance = Math.hypot(
+        e.touches[0].clientX - e.touches[1].clientX,
+        e.touches[0].clientY - e.touches[1].clientY
+      );
+
+      if (touchStartDistance.current > 0) {
+        const scale = currentDistance / touchStartDistance.current;
+        const newZoom = Math.min(Math.max(zoom * scale, 1), 3);
+        setZoom(newZoom);
+      }
+      touchStartDistance.current = currentDistance;
+    } else if (isDragging && zoom > 1) {
+      // Single touch pan
+      const container = imageContainerRef.current;
+      if (!container) return;
+
+      const newX = e.touches[0].clientX - startPos.x;
+      const newY = e.touches[0].clientY - startPos.y;
+
+      const maxX = (container.scrollWidth - container.clientWidth) / 2;
+      const maxY = (container.scrollHeight - container.clientHeight) / 2;
+
+      setPosition({
+        x: Math.max(-maxX, Math.min(maxX, newX)),
+        y: Math.max(-maxY, Math.min(maxY, newY)),
+      });
+    }
+  };
+
+  const handleTouchEnd = () => {
+    setIsDragging(false);
+    touchStartDistance.current = 0;
   };
 
   const handleWheel = (e: React.WheelEvent) => {
@@ -180,16 +236,16 @@ export function ImageGallery({
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="max-w-4xl w-[95vw] p-0 gap-0 overflow-hidden h-[90vh] flex flex-col">
+      <DialogContent className="max-w-4xl w-[95vw] lg:w-[80vw] xl:w-[70vw] p-0 gap-0 overflow-hidden h-[90vh] md:h-[80vh] flex flex-col">
         <div className="relative flex flex-col flex-1">
           {/* Header */}
           <div className="flex items-center justify-between border-b p-3 sm:p-4">
-            <div className="space-y-1">
-              <DialogTitle className="text-base sm:text-lg">
+            <div className="space-y-1 max-w-[70%]">
+              <DialogTitle className="text-base sm:text-lg truncate">
                 {title} - {currentIndex + 1} of {images.length}
               </DialogTitle>
               {currentImage.title && (
-                <p className="text-xs sm:text-sm text-muted-foreground">
+                <p className="text-xs sm:text-sm text-muted-foreground truncate">
                   {currentImage.title}
                 </p>
               )}
@@ -218,16 +274,6 @@ export function ImageGallery({
               <Button
                 variant="ghost"
                 size="icon"
-                onClick={handleZoomOut}
-                disabled={zoom <= 1}
-                className="h-8 w-8 sm:h-9 sm:w-9"
-              >
-                <ZoomOut className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
-                <span className="sr-only">Zoom out</span>
-              </Button>
-              <Button
-                variant="ghost"
-                size="icon"
                 onClick={resetZoom}
                 disabled={zoom === 1}
                 className="h-8 w-8 sm:h-9 sm:w-9"
@@ -251,7 +297,7 @@ export function ImageGallery({
           <div className="relative flex-1 flex items-center justify-center bg-muted/30 p-2 sm:p-4 overflow-hidden">
             <div
               ref={imageContainerRef}
-              className="relative aspect-auto max-h-[calc(90vh-180px)] w-full overflow-auto rounded-md flex items-center justify-center"
+              className="relative aspect-auto max-h-[calc(90vh-180px)] md:max-h-[calc(80vh-180px)] w-full overflow-auto rounded-md flex items-center justify-center touch-none"
               style={{
                 cursor:
                   zoom > 1 ? (isDragging ? "grabbing" : "grab") : "default",
@@ -260,6 +306,9 @@ export function ImageGallery({
               onMouseMove={handleMouseMove}
               onMouseUp={handleMouseUp}
               onMouseLeave={handleMouseUp}
+              onTouchStart={handleTouchStart}
+              onTouchMove={handleTouchMove}
+              onTouchEnd={handleTouchEnd}
               onWheel={handleWheel}
             >
               {isLoading && (
@@ -270,7 +319,7 @@ export function ImageGallery({
               <Image
                 src={currentImage.url}
                 alt={currentImage.title || `Image ${currentIndex + 1}`}
-                className="mx-auto h-auto max-h-[calc(90vh-180px)] w-auto max-w-full object-contain transition-transform duration-200"
+                className="mx-auto h-auto max-h-[calc(90vh-180px)] md:max-h-[calc(80vh-180px)] w-auto max-w-full object-contain transition-transform duration-200"
                 width={800}
                 height={600}
                 style={{
@@ -287,19 +336,19 @@ export function ImageGallery({
                 <Button
                   variant="ghost"
                   size="icon"
-                  className="absolute left-2 sm:left-4 h-8 w-8 sm:h-10 sm:w-10 rounded-full bg-background/80 shadow-sm backdrop-blur-sm hover:bg-background/90"
+                  className="absolute left-2 sm:left-4 h-10 w-10 rounded-full bg-background/80 shadow-sm backdrop-blur-sm hover:bg-background/90"
                   onClick={handlePrevious}
                 >
-                  <ChevronLeft className="h-4 w-4 sm:h-6 sm:w-6" />
+                  <ChevronLeft className="h-5 w-5 sm:h-6 sm:w-6" />
                   <span className="sr-only">Previous image</span>
                 </Button>
                 <Button
                   variant="ghost"
                   size="icon"
-                  className="absolute right-2 sm:right-4 h-8 w-8 sm:h-10 sm:w-10 rounded-full bg-background/80 shadow-sm backdrop-blur-sm hover:bg-background/90"
+                  className="absolute right-2 sm:right-4 h-10 w-10 rounded-full bg-background/80 shadow-sm backdrop-blur-sm hover:bg-background/90"
                   onClick={handleNext}
                 >
-                  <ChevronRight className="h-4 w-4 sm:h-6 sm:w-6" />
+                  <ChevronRight className="h-5 w-5 sm:h-6 sm:w-6" />
                   <span className="sr-only">Next image</span>
                 </Button>
               </>
