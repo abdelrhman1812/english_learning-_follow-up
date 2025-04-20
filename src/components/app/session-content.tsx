@@ -72,7 +72,7 @@ export function SessionContent({ session }: SessionContentProps) {
 
     setIsSending(true);
 
-    const phoneNumber = "20100803471";
+    const phoneNumber = "201008034761";
     const message = `Feedback for session "${session.name}":\n\n${feedback}`;
     const encodedMessage = encodeURIComponent(message);
     const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
