@@ -2,7 +2,7 @@ import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import levelsData from "@/data/levels-data.json";
-import { Book, FileAudio, Image, Layout } from "lucide-react";
+import { Book, FileAudio, Image as IMG, Layout } from "lucide-react";
 import Link from "next/link";
 
 const LevelPage = async ({
@@ -43,12 +43,15 @@ const LevelPage = async ({
                     className="text-xl bg-accent/50 hover:bg-accent/70 transition-colors"
                   >
                     {unit?.sessions?.length}
+
                     {unit?.sessions?.length === 1 ? " Session" : " Sessions"}
                   </Badge>
                 </div>
               </CardHeader>
               <CardContent>
                 <ScrollArea className="h-[280px] w-full rounded-xl border border-accent/30 md:p-4">
+                  {unit?.sessions?.length == 0 && " No Sessions"}
+
                   {unit?.sessions?.map((session, sessionIndex) => (
                     <div
                       key={sessionIndex}
@@ -73,7 +76,7 @@ const LevelPage = async ({
                           <span>{session.ebook.images.length} eBooks</span>
                         </div>
                         <div className="flex items-center gap-2 text-base text-muted-foreground hover:text-accent transition-colors group">
-                          <Image className="h-5 w-5 group-hover:text-accent transition-colors" />
+                          <IMG className="h-5 w-5 group-hover:text-accent transition-colors" />
                           <span>
                             {session.activities.images.length} Activities
                           </span>

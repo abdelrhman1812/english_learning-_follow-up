@@ -115,6 +115,7 @@ export function AudioPlayer({ fileName, url }: AudioPlayerProps) {
 
   return (
     <div className="flex flex-col space-y-2 rounded-md border bg-card p-3 shadow-sm">
+      <span className="text-sm font-medium">{fileName}</span>
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-2">
           <Button
@@ -129,7 +130,6 @@ export function AudioPlayer({ fileName, url }: AudioPlayerProps) {
               <Play className="h-4 w-4" />
             )}
           </Button>
-          <span className="text-sm font-medium">{fileName}</span>
         </div>
         <div className="flex items-center gap-2">
           <Button

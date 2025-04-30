@@ -8,22 +8,7 @@
         {
           "id": "A1_1",
           "name": "A1.1",
-          "sessions": [
-            {
-              "id": "session_1",
-              "name": "Session 1",
-              "plan": {
-                "images": [],
-                "audios": []
-              },
-              "ebook": {
-                "images": []
-              },
-              "activities": {
-                "images": []
-              }
-            }
-          ]
+          "sessions": []
         },
         {
           "id": "A1_2",
@@ -80,29 +65,129 @@
                     "url": "/assets/level_1/A1.2/activities/page 9.jpg"
                   }
                 ]
+              },
+              "hw": {
+                "images": [],
+                "audios": []
               }
-            }
-          ]
-        },
-        {
-          "id": "A1_2",
-          "name": "A1.3",
-          "sessions": [
+            },
             {
-              "id": "session_1",
-              "name": "Session 1",
+              "id": "session_2",
+              "name": "Session 2",
               "plan": {
                 "images": [],
                 "audios": []
               },
               "ebook": {
-                "images": []
+                "images": [
+                  {
+                    "title": "Page 4",
+                    "url": "/assets/level_1/A1.2/Session2/w-book/page 4.jpg"
+                  },
+                  {
+                    "title": "Page 5",
+                    "url": "/assets/level_1/A1.2/Session2/w-book/page 5.jpg"
+                  },
+                  {
+                    "title": "Page 6",
+                    "url": "/assets/level_1/A1.2/Session2/w-book/page 6.jpg"
+                  }
+                ]
               },
               "activities": {
-                "images": []
+                "images": [
+                  {
+                    "title": "Page 2",
+                    "url": "/assets/level_1/A1.2/Session2/activities/page 2.jpg"
+                  },
+                  {
+                    "title": "Page 3",
+                    "url": "/assets/level_1/A1.2/Session2/activities/page 3.jpg"
+                  },
+                  {
+                    "title": "Page 4",
+                    "url": "/assets/level_1/A1.2/Session2/activities/page 4.jpg"
+                  },
+                  {
+                    "title": "Page 10",
+                    "url": "/assets/level_1/A1.2/Session2/activities/page 10.jpg"
+                  },
+                  {
+                    "title": "Page 11",
+                    "url": "/assets/level_1/A1.2/Session2/activities/page 11.jpg"
+                  }
+                ]
+              },
+              "hw": {
+                "images": [],
+                "audios": [
+                  {
+                    "title": "Have you ever heard someone use the phrase “once in a blue moon?",
+                    "url": "/assets/level_1/A1.2/H_W/session2/Audio/Blue moon/Part 1.mp3"
+                  },
+                  {
+                    "title": "I Think , People use this expression to describe something that they do not do very often.",
+                    "url": "/assets/level_1/A1.2/H_W/session2/Audio/Blue moon/Part 2.mp3"
+                  },
+                  {
+                    "title": "Can you give me example ?",
+                    "url": "/assets/level_1/A1.2/H_W/session2/Audio/Blue moon/Part 3.mp3"
+                  },
+                  {
+                    "title": "yeah , For example, someone might say that he tries to avoid eating sweets because they are unhealthy, but will eat chocolate 'once in a blue moon.'",
+                    "url": "/assets/level_1/A1.2/H_W/session2/Audio/Blue moon/Part 4.mp3"
+                  },
+                  {
+                    "title": "I can't understand you well",
+                    "url": "/assets/level_1/A1.2/H_W/session2/Audio/Blue moon/Part 5.mp3"
+                  },
+                  {
+                    "title": "ok , I will give you anther example , Imagine that , someone who does not usually like to go to the beach might say “I visit the shore once in a blue​ moon.” and I Think While many people use this phrase, not everyone knows the meaning behind it.",
+                    "url": "/assets/level_1/A1.2/H_W/session2/Audio/Blue moon/Part 6.mp3"
+                  },
+                  {
+                    "title": "oh , you mean , The first thing to know is that the moon itself is never actually blue. This is just an expression.",
+                    "url": "/assets/level_1/A1.2/H_W/session2/Audio/Blue moon/Part 7.mp3"
+                  },
+
+                  {
+                    "title": "The phrase “blue moon” actually has to do with the shape of the moon, not the color.",
+                    "url": "/assets/level_1/A1.2/H_W/session2/Audio/Blue moon/Part 8.mp3"
+                  },
+
+                  {
+                    "title": "yes , You're understanding me now and I will tell you something about moon",
+                    "url": "/assets/level_1/A1.2/H_W/session2/Audio/Blue moon/Part 9.mp3"
+                  },
+
+                  {
+                    "title": "As the moon travels around the Earth, it appears to change shape. We associate certain names with certain shapes of the moon. For example, when we can see a small part of the moon, it is called a crescent moon.",
+                    "url": "/assets/level_1/A1.2/H_W/session2/Audio/Blue moon/Part 10.mp3"
+                  },
+
+                  {
+                    "title": "wait , what do you mean by 'crescent moon' ?",
+                    "url": "/assets/level_1/A1.2/H_W/session2/Audio/Blue moon/Part 11.mp3"
+                  },
+
+                  {
+                    "title": "A crescent is a shape that looks like the tip of a fingernail. When we cannot see the moon at all,it is called a new moon.",
+                    "url": "/assets/level_1/A1.2/H_W/session2/Audio/Blue moon/Part 12.mp3"
+                  },
+
+                  {
+                    "title": "When we can see the entire moon, it is called a full moon. Usually, there is only one full moon every month.Sometimes, however, there will be two full moons in one month. When this happens, the second full moon is called a “blue moon.",
+                    "url": "/assets/level_1/A1.2/H_W/session2/Audio/Blue moon/Part 13.mp3"
+                  }
+                ]
               }
             }
           ]
+        },
+        {
+          "id": "A1_3",
+          "name": "A1.3",
+          "sessions": []
         }
       ]
     },

@@ -42,6 +42,16 @@ interface SessionContentProps {
         url: string;
       }>;
     };
+    hw?: {
+      images: Array<{
+        title: string;
+        url: string;
+      }>;
+      audios: Array<{
+        title: string;
+        url: string;
+      }>;
+    };
   };
 }
 
@@ -55,6 +65,7 @@ export function SessionContent({ session }: SessionContentProps) {
   const [initialImageIndex, setInitialImageIndex] = useState(0);
   const [feedback, setFeedback] = useState("");
   const [isSending, setIsSending] = useState(false);
+  const [showAllAudios, setShowAllAudios] = useState(false);
 
   const openGallery = (
     images: Array<{ title: string; url: string }>,
@@ -96,7 +107,7 @@ export function SessionContent({ session }: SessionContentProps) {
       </div>
 
       <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
-        <TabsList className="grid w-full grid-cols-3">
+        <TabsList className="grid w-full grid-cols-4">
           <TabsTrigger
             value="plan"
             className="flex items-center gap-2 data-[state=active]:bg-accent data-[state=active]:text-accent-foreground"
@@ -117,6 +128,13 @@ export function SessionContent({ session }: SessionContentProps) {
           >
             <Play className="h-4 w-4" />
             <span>Activities</span>
+          </TabsTrigger>
+          <TabsTrigger
+            value="hw"
+            className="flex items-center gap-2 data-[state=active]:bg-accent data-[state=active]:text-accent-foreground"
+          >
+            <Play className="h-4 w-4" />
+            <span>HW</span>
           </TabsTrigger>
         </TabsList>
 
@@ -276,6 +294,111 @@ export function SessionContent({ session }: SessionContentProps) {
                   </div>
                 ))}
               </div>
+            </CardContent>
+          </Card>
+        </TabsContent>
+        <TabsContent value="hw" className="mt-6">
+          <Card>
+            <CardHeader>
+              <CardTitle>Homework</CardTitle>
+              <CardDescription>
+                Review the homework images and audio materials
+              </CardDescription>
+            </CardHeader>
+            <CardContent className="space-y-6">
+              {/* Images For Homework - Only renders if hw exists and has images */}
+              {session.hw?.images && session.hw.images.length > 0 && (
+                <div className="space-y-4">
+                  <h3 className="text-lg font-medium">Images</h3>
+                  <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+                    {session.hw.images.map((image, index) => (
+                      <div
+                        key={`${image.url}-${index}`}
+                        className="group relative overflow-hidden rounded-lg border border-muted transition-all hover:shadow-md"
+                        onClick={() =>
+                          openGallery(
+                            session.hw!.images, // Safe non-null assertion after existence check
+                            "Lesson hw Images",
+                            index
+                          )
+                        }
+                      >
+                        <div className="aspect-video w-full bg-muted flex items-center justify-center cursor-pointer">
+                          <Image
+                            src={image.url}
+                            alt={image.title || `Plan image ${index + 1}`}
+                            className="h-full w-full object-cover transition-transform group-hover:scale-105"
+                            width={350}
+                            height={200}
+                          />
+                          <div className="absolute inset-0 flex items-center justify-center bg-black/0 opacity-0 transition-opacity group-hover:bg-black/20 group-hover:opacity-100">
+                            <Maximize2 className="h-8 w-8 text-white drop-shadow-md" />
+                          </div>
+                        </div>
+                        <div className="p-3">
+                          <p className="font-medium">
+                            {image.title || `Image ${index + 1}`}
+                          </p>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {/* Audios For Homework - Only renders if hw exists and has audios */}
+              {session.hw?.audios && (
+                <div className="space-y-4">
+                  <h3 className="text-lg font-medium">Audio Resources</h3>
+                  {session.hw.audios.length > 0 ? (
+                    <>
+                      <div className="space-y-2">
+                        {session.hw.audios
+                          .slice(
+                            0,
+                            showAllAudios ? session.hw.audios.length : 5
+                          )
+                          .map((audio, index) => (
+                            <AudioPlayer
+                              key={`${audio.url}-${index}`}
+                              fileName={audio.title || `Audio ${index + 1}`}
+                              url={audio.url}
+                            />
+                          ))}
+                      </div>
+
+                      {!showAllAudios && session.hw.audios.length > 5 && (
+                        <button
+                          onClick={() => setShowAllAudios(true)}
+                          className="text-blue-500 hover:underline mt-2"
+                        >
+                          Show All Audios ({session.hw.audios.length - 5}{" "}
+                          remaining)
+                        </button>
+                      )}
+                      {showAllAudios && session.hw.audios.length > 5 && (
+                        <button
+                          onClick={() => setShowAllAudios(false)}
+                          className="text-blue-500 hover:underline mt-2"
+                        >
+                          Show Less
+                        </button>
+                      )}
+                    </>
+                  ) : (
+                    <p className="text-muted-foreground">
+                      No audio resources available
+                    </p>
+                  )}
+                </div>
+              )}
+
+              {/* Fallback when no hw content exists */}
+              {!session.hw && (
+                <div className="text-center text-muted-foreground py-8">
+                  No homework content available
+                </div>
+              )}
             </CardContent>
           </Card>
         </TabsContent>
