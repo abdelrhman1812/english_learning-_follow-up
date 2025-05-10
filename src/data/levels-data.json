@@ -181,6 +181,81 @@
                   }
                 ]
               }
+            },
+            {
+              "id": "session_3",
+              "name": "Session 3",
+              "plan": {
+                "images": [
+                  {
+                    "title": "Story about favorite color",
+                    "url": "/assets/level_1/A1.2/session 3/Plan/story.png"
+                  }
+                ],
+                "audios": []
+              },
+              "ebook": {
+                "images": [
+                  {
+                    "title": "Page 7",
+                    "url": "/assets/level_1/A1.2/session 3/w-book/page 7.jpg"
+                  },
+                  {
+                    "title": "Page 8",
+                    "url": "/assets/level_1/A1.2/session 3/w-book/page 8.jpg"
+                  },
+                  {
+                    "title": "Page 9",
+                    "url": "/assets/level_1/A1.2/session 3/w-book/page 9.jpg"
+                  },
+                  {
+                    "title": "Page 10",
+                    "url": "/assets/level_1/A1.2/session 3/w-book/page 10.jpg"
+                  }
+                ]
+              },
+              "activities": {
+                "images": [
+                  {
+                    "title": "Page 15",
+                    "url": "/assets/level_1/A1.2/session 3/activities/page 15.jpg"
+                  },
+                  {
+                    "title": "Page 16",
+                    "url": "/assets/level_1/A1.2/session 3/activities/page 16.jpg"
+                  }
+                ]
+              },
+              "hw": {
+                "images": [
+                  {
+                    "title": "Summary",
+                    "url": "/assets/level_1/A1.2/session 3/H_W/Images/summary.png"
+                  }
+                ],
+                "audios": [
+                  {
+                    "title": "Personal information : ==> What is your name ? -- where are you from ? -- what language do you speak ? -- what is your occupation ?",
+                    "url": "/assets/level_1/A1.2/session 3/H_W/Audio/Questions/First part of question.mp3"
+                  },
+                  {
+                    "title": "Food : ==> What are your favorite foods ? -- Do you cook ? what can you make ? -- Do you often go to restaurants ? -- Do you get takeaway ? which ones ?",
+                    "url": "/assets/level_1/A1.2/session 3/H_W/Audio/Questions/Second part of question.mp3"
+                  },
+                  {
+                    "title": "Your nest friend : ==>  What is his name ? -- what dose he look like ? -- what activities does he like ? -- How often do you talk to him ?",
+                    "url": "/assets/level_1/A1.2/session 3/H_W/Audio/Questions/Third part of question.mp3"
+                  },
+                  {
+                    "title": "Your city / town / village : ==>  Do you live in a city , town , or village ? -- Is it near the beach or the mountains ? -- what shops and restaurants are there ? -- what activities can you do there ?",
+                    "url": "/assets/level_1/A1.2/session 3/H_W/Audio/Questions/Fourth part of question.mp3"
+                  },
+                  {
+                    "title": "Other activities : ==>  How often do you go to the cinema ? -- Do you like to read ? what do you read ? -- Do you go to museums or art galleries ? -- Do you go to music concerts ?",
+                    "url": "/assets/level_1/A1.2/session 3/H_W/Audio/Questions/Fifth part of question.mp3"
+                  }
+                ]
+              }
             }
           ]
         },

@@ -2,7 +2,7 @@
 
 import { Button } from "@/components/ui/button";
 import { Slider } from "@/components/ui/slider";
-import { Pause, Play, Volume2, VolumeX } from "lucide-react";
+import { Download, Pause, Play, Volume2, VolumeX } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 
 interface AudioPlayerProps {
@@ -154,6 +154,11 @@ export function AudioPlayer({ fileName, url }: AudioPlayerProps) {
               className="h-1.5"
             />
           </div>
+          <Button variant="ghost" size="icon" className="h-7 w-7" asChild>
+            <a href={url} download={fileName}>
+              <Download className="h-4 w-4" />
+            </a>
+          </Button>
         </div>
       </div>
 
