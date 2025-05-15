@@ -256,6 +256,34 @@
                   }
                 ]
               }
+            },
+            {
+              "id": "session_4",
+              "name": "Session 4",
+              "plan": {
+                "images": [],
+                "audios": []
+              },
+              "ebook": {
+                "images": []
+              },
+              "activities": {
+                "images": []
+              },
+              "hw": {
+                "images": [
+                  {
+                    "title": "Mum's Routine",
+                    "url": "/assets/level_1/A1.2/session 4/H_W/Images/mum's_routine.png"
+                  }
+                ],
+                "audios": [
+                  {
+                    "title": "Social media",
+                    "url": "/assets/level_1/A1.2/session 4/H_W/Audio/social media.mpeg"
+                  }
+                ]
+              }
             }
           ]
         },
