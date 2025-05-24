@@ -149,29 +149,31 @@ export function SessionContent({ session }: SessionContentProps) {
             <CardContent className="space-y-6">
               <div className="space-y-4">
                 <h3 className="text-lg font-medium">Images</h3>
-                <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+                <div className="grid grid-cols-1 gap-6  lg:grid-cols-2">
                   {session.plan.images.map((image, index) => (
-                    <div
-                      key={index}
-                      className="group relative overflow-hidden rounded-lg border border-muted transition-all hover:shadow-md"
-                      onClick={() =>
-                        openGallery(
-                          session.plan.images,
-                          "Lesson Plan Images",
-                          index
-                        )
-                      }
-                    >
-                      <div className="aspect-video w-full bg-muted flex items-center justify-center cursor-pointer">
-                        <Image
-                          src={image.url}
-                          alt={image.title || `Plan image ${index + 1}`}
-                          className="h-full w-full object-cover transition-transform group-hover:scale-105"
-                          width={350}
-                          height={200}
-                        />
-                        <div className="absolute inset-0 flex items-center justify-center bg-black/0 opacity-0 transition-opacity group-hover:bg-black/20 group-hover:opacity-100">
-                          <Maximize2 className="h-8 w-8 text-white drop-shadow-md" />
+                    <>
+                      <div
+                        key={index}
+                        className="group relative overflow-hidden rounded-lg border border-muted transition-all hover:shadow-md"
+                        onClick={() =>
+                          openGallery(
+                            session.plan.images,
+                            "Lesson Plan Images",
+                            index
+                          )
+                        }
+                      >
+                        <div className="aspect-video w-full bg-muted flex items-center justify-center cursor-pointer">
+                          <Image
+                            src={image.url}
+                            alt={image.title || `Plan image ${index + 1}`}
+                            className="h-full w-full object-cover transition-transform group-hover:scale-105"
+                            width={350}
+                            height={200}
+                          />
+                          <div className="absolute inset-0 flex items-center justify-center bg-black/0 opacity-0 transition-opacity group-hover:bg-black/20 group-hover:opacity-100">
+                            <Maximize2 className="h-8 w-8 text-white drop-shadow-md" />
+                          </div>
                         </div>
                       </div>
                       <div className="p-3">
@@ -179,7 +181,7 @@ export function SessionContent({ session }: SessionContentProps) {
                           {image.title || `Image ${index + 1}`}
                         </p>
                       </div>
-                    </div>
+                    </>
                   ))}
                 </div>
               </div>

@@ -265,10 +265,28 @@
                 "audios": []
               },
               "ebook": {
-                "images": []
+                "images": [
+                  {
+                    "title": "Page 11",
+                    "url": "/assets/level_1/A1.2/session 4/w-book/page 11.jpeg"
+                  },
+                  {
+                    "title": "Page 12",
+                    "url": "/assets/level_1/A1.2/session 4/w-book/page 12.jpeg"
+                  },
+                  {
+                    "title": "Page 13",
+                    "url": "/assets/level_1/A1.2/session 4/w-book/page 13.jpeg"
+                  }
+                ]
               },
               "activities": {
-                "images": []
+                "images": [
+                  {
+                    "title": "Page 17",
+                    "url": "/assets/level_1/A1.2/session 4/activities/page 17.jpeg"
+                  }
+                ]
               },
               "hw": {
                 "images": [
@@ -283,6 +301,56 @@
                     "url": "/assets/level_1/A1.2/session 4/H_W/Audio/social media.mpeg"
                   }
                 ]
+              }
+            },
+            {
+              "id": "session_5",
+              "name": "Session 5",
+              "plan": {
+                "images": [
+                  {
+                    "title": "Every weekday, I usually get up at 6:00 in the morning. Then I use the bathroom to take a shower. Then, I brush my teeth using some toothpaste and my toothbrush. I generally make breakfast if my mom doesn’t make it. Then I usually make a coffee and drink it while using my laptop to check my email and social media accounts.After that, I get dressed. Next, I grab my things, and at about 7:00, I head to ITI. I always take public transport, like minibuses, to get to work and home.Then, when I get to the institute, I always mark my attendance and then go to the lecture room.I always take a break from about 12:00 to 12:30 p.m. I often have lunch during this time. After the break time is finished, I return to the lecture room. I usually finish the lecture at about 3:30 p.m. Then, I head home. When I get home, I get changed and have lunch. I usually have it late. Then, I take a shower and unwind. At around 8:00 p.m., I study and do some homework. I often have dinner at 9:00 If I finish early, I sometimes go out.Finally, I go to bed, but sometimes before that, I check my email and my social media accounts, and then I go to sleep.",
+                    "url": "/assets/level_1/A1.2/session 5/Plan/images/Daily routine.png"
+                  }
+                ],
+                "audios": [
+                  {
+                    "title": "Daily routine",
+                    "url": "/assets/level_1/A1.2/session 5/Plan/Audio/Daily routine.mpeg"
+                  }
+                ]
+              },
+              "ebook": {
+                "images": [
+                  {
+                    "title": "Page 14",
+                    "url": "/assets/level_1/A1.2/session 5/w-book/14.jpeg"
+                  },
+                  {
+                    "title": "Page 15",
+                    "url": "/assets/level_1/A1.2/session 5/w-book/15.jpeg"
+                  },
+                  {
+                    "title": "Page 16",
+                    "url": "/assets/level_1/A1.2/session 5/w-book/16.jpeg"
+                  }
+                ]
+              },
+              "activities": {
+                "images": [
+                  {
+                    "title": "Page 23",
+                    "url": "/assets/level_1/A1.2/session 5/activities/23.jpeg"
+                  },
+                  {
+                    "title": "Page 26",
+                    "url": "/assets/level_1/A1.2/session 5/activities/26.jpeg"
+                  }
+                ]
+              },
+              "hw": {
+                "images": [],
+                "audios": []
               }
             }
           ]
